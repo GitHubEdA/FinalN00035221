@@ -1,0 +1,51 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<h1>Ingrese los Nombres de los Jugadores</h1>
+<br />
+
+<form action="/Home/Jugar" method="post">
+
+    <div>
+        <label>Jugador 1:</label>
+        <div>
+            <input name="Jugadores[0]">
+        </div>
+    </div>
+    <br />
+    <div>
+        <label>Jugador 2:</label>
+        <div>
+            <input name="Jugadores[1]">
+        </div>
+    </div>
+    <br />
+    <div>
+        <label>Jugador 3:</label>
+        <div>
+            <input name="Jugadores[2]">
+        </div>
+    </div>
+    <br />
+    <div>
+        <label>Jugador 4:</label>
+        <div>
+            <input name="Jugadores[3]">
+        </div>
+    </div>
+    <br />
+    <div>
+        <label>Jugador 5:</label>
+        <div>
+            <input name="Jugadores[4]">
+        </div>
+    </div>
+    <br />
+    <div>
+        <div align="center">
+            <button class="btn btn-primary">Simular</button>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,35 @@
+﻿@{
+    ViewData["Title"] = "Jugar";
+}
+
+<h1>Poker</h1>
+<br />
+<br />
+<div class="row">
+    @foreach (var item1 in Model)
+    {
+        <div class="col-sm-2">
+            <div class="card" style="width: 15rem; margin-left: 1rem;">
+                <div class="card-header">
+                    @item1.nombre
+                </div>
+                @foreach (var item2 in item1.mano)
+                {
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            @item2.numero
+                        @if (item2.palo == 1)
+                        {<span>&#9824</span>} @* Picas *@
+                        @if (item2.palo == 2)
+                        {<span>&#9827</span>} @* Tréboles *@
+                        @if (item2.palo == 3)
+                        {<span>&#9829</span>} @* Corazones *@
+                        @if (item2.palo == 4)
+                        {<span>&#9830</span>} @* Diamantes *@
+                    </li>
+                </ul>
+            }
+            </div>
+        </div>
+    }
+</div>
