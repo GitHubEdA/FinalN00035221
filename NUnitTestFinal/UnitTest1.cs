@@ -8,7 +8,7 @@ namespace NUnitTestFinal
     public class Tests
     {
         [Test]
-        public void EscaleradecolorManoInvencible()
+        public void EscaleraReal()
         {
             List<Carta> cartas = new List<Carta>();
 
@@ -81,11 +81,11 @@ namespace NUnitTestFinal
         {
             List<Carta> cartas = new List<Carta>();
 
-            cartas.Add(new Carta() { numero = 2, palo = 1 });
-            cartas.Add(new Carta() { numero = 10, palo = 1 });
-            cartas.Add(new Carta() { numero = 10, palo = 2 });
-            cartas.Add(new Carta() { numero = 10, palo = 3 });
-            cartas.Add(new Carta() { numero = 10, palo = 4 });
+            cartas.Add(new Carta() { numero = 7, palo = 1 });
+            cartas.Add(new Carta() { numero = 14, palo = 1 });
+            cartas.Add(new Carta() { numero = 14, palo = 2 });
+            cartas.Add(new Carta() { numero = 14, palo = 3 });
+            cartas.Add(new Carta() { numero = 14, palo = 4 });
  
             var controller = new HomeController();
             var resultado = controller.Poker(cartas);
@@ -115,17 +115,18 @@ namespace NUnitTestFinal
         {
             List<Carta> cartas = new List<Carta>();
 
-            cartas.Add(new Carta() { numero = 1, palo = 1 });
-            cartas.Add(new Carta() { numero = 2, palo = 1 });
-            cartas.Add(new Carta() { numero = 3, palo = 1 });
             cartas.Add(new Carta() { numero = 4, palo = 1 });
-            cartas.Add(new Carta() { numero = 5, palo = 1 });
+            cartas.Add(new Carta() { numero = 7, palo = 1 });
+            cartas.Add(new Carta() { numero = 9, palo = 1 });
+            cartas.Add(new Carta() { numero = 10, palo = 1 });
+            cartas.Add(new Carta() { numero = 12, palo = 1 });
 
             var controller = new HomeController();
             var resultado = controller.Color(cartas);
 
             Assert.AreEqual("Color", resultado);
         }
+
         [Test]
         public void NoColor()
         {
@@ -151,6 +152,22 @@ namespace NUnitTestFinal
             cartas.Add(new Carta() { numero = 3, palo = 3 });
             cartas.Add(new Carta() { numero = 4, palo = 2 });
             cartas.Add(new Carta() { numero = 5, palo = 4 });
+            cartas.Add(new Carta() { numero = 6, palo = 1 });
+
+            var controller = new HomeController();
+            var resultado = controller.Escalera(cartas);
+
+            Assert.AreEqual("Escalera", resultado);
+        }
+        [Test]
+        public void EscaleraMismoPalo()
+        {
+            List<Carta> cartas = new List<Carta>();
+
+            cartas.Add(new Carta() { numero = 2, palo = 1 });
+            cartas.Add(new Carta() { numero = 3, palo = 1 });
+            cartas.Add(new Carta() { numero = 4, palo = 1 });
+            cartas.Add(new Carta() { numero = 5, palo = 1 });
             cartas.Add(new Carta() { numero = 6, palo = 1 });
 
             var controller = new HomeController();
@@ -208,16 +225,47 @@ namespace NUnitTestFinal
             Assert.AreEqual("No Full", resultado);
         }
         [Test]
+        public void FullDistintoMaso()
+        {
+            List<Carta> cartas = new List<Carta>();
+
+            cartas.Add(new Carta() { numero = 10, palo = 1 });
+            cartas.Add(new Carta() { numero = 10, palo = 3 });
+            cartas.Add(new Carta() { numero = 10, palo = 2 });
+            cartas.Add(new Carta() { numero = 13, palo = 4 });
+            cartas.Add(new Carta() { numero = 13, palo = 1 });
+
+            var controller = new HomeController();
+            var resultado = controller.Full(cartas);
+
+            Assert.AreEqual("Full", resultado);
+        }
+        [Test]
         public void Trio()
         {
             List<Carta> cartas = new List<Carta>();
 
+            cartas.Add(new Carta() { numero = 4, palo = 1 });
+            cartas.Add(new Carta() { numero = 7, palo = 3 });
             cartas.Add(new Carta() { numero = 13, palo = 2 });
             cartas.Add(new Carta() { numero = 13, palo = 4 });
             cartas.Add(new Carta() { numero = 13, palo = 1 });
-            cartas.Add(new Carta() { numero = 4, palo = 1 });
-            cartas.Add(new Carta() { numero = 7, palo = 3 });
 
+            var controller = new HomeController();
+            var resultado = controller.Trio(cartas);
+
+            Assert.AreEqual("Trio", resultado);
+        }
+        [Test]
+        public void TrioDesdeAbajo()
+        {
+            List<Carta> cartas = new List<Carta>();
+
+            cartas.Add(new Carta() { numero = 4, palo = 1 });
+            cartas.Add(new Carta() { numero = 4, palo = 3 });
+            cartas.Add(new Carta() { numero = 4, palo = 2 });
+            cartas.Add(new Carta() { numero = 7, palo = 4 });
+            cartas.Add(new Carta() { numero = 13, palo = 1 });
 
             var controller = new HomeController();
             var resultado = controller.Trio(cartas);
@@ -257,6 +305,22 @@ namespace NUnitTestFinal
             Assert.AreEqual("Un Par", resultado);
         }
         [Test]
+        public void ParDesdeAbajo()
+        {
+            List<Carta> cartas = new List<Carta>();
+
+            cartas.Add(new Carta() { numero = 2, palo = 1 });
+            cartas.Add(new Carta() { numero = 2, palo = 3 });
+            cartas.Add(new Carta() { numero = 6, palo = 2 });
+            cartas.Add(new Carta() { numero = 8, palo = 4 });
+            cartas.Add(new Carta() { numero = 14, palo = 1 });
+
+            var controller = new HomeController();
+            var resultado = controller.UnPar(cartas);
+
+            Assert.AreEqual("Un Par", resultado);
+        }
+        [Test]
         public void NoPar()
         {
             List<Carta> cartas = new List<Carta>();
@@ -288,6 +352,7 @@ namespace NUnitTestFinal
 
             Assert.AreEqual("Un Doble", resultado);
         }
+
         [Test]
         public void NoDoble()
         {

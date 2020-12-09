@@ -169,7 +169,7 @@ namespace FinalN00035221.Controllers
             int i = 0;
             foreach (var carta in cartas)
             {
-                if (falsa.palo == carta.palo)
+                if (falsa.palo == carta.palo )
                 {
                     falsa = carta; i++;
                 }
